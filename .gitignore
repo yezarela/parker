@@ -1,5 +1,8 @@
-# Ignore build
+# Binaries
 parker
 
 # IDE
 .vscode
+
+# Mac OS X hidden files
+.DS_Store
