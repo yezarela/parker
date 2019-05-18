@@ -1,10 +1,14 @@
 package main
 
 import (
-	"fmt"
+	"github.com/yezarela/parker/park"
 )
 
 func main() {
 
-	fmt.Println("Hello")
+	p := park.NewPark()
+
+	p.InitSlots(40)
+	p.In(park.Car{"A1", "Black"})
+	p.Out(1)
 }
