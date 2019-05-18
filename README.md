@@ -13,7 +13,7 @@ Before started, please assure that your environment follows these specs:
 - Go version 1.12+
 - Linux/Unix Machine
 
-The folder structure in this project is based on [aws-sdk-go](https://github.com/aws/aws-sdk-go) directory structure. Each folder represents a package.
+The folder structure in this project is based on [aws-sdk-go/service](https://github.com/aws/aws-sdk-go/tree/master/service) directory structure. Each folder represents a package.
 
 - `cmd` folder contains handlers to handle commands given from interactive shell.
 - `park` folder contains the core algorithms to implement parker.
