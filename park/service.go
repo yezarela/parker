@@ -64,7 +64,7 @@ func (p *Park) In(car Car) (*int, error) {
 // Out removes a car from slot by id
 func (p *Park) Out(id int) (*int, error) {
 
-	if slot := p.Get(id); slot == nil {
+	if slot := p.GetSlot(id); slot == nil {
 		return nil, errors.New(ErrNotFound)
 	}
 
@@ -75,8 +75,8 @@ func (p *Park) Out(id int) (*int, error) {
 	return &id, nil
 }
 
-// Get returns slot by slot id
-func (p *Park) Get(id int) *Car {
+// GetSlot returns slot by slot id
+func (p *Park) GetSlot(id int) *Car {
 
 	if s, exist := p.Slots[id]; exist {
 		return &s
