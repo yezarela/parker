@@ -61,6 +61,9 @@ func (c *Commander) ExecCommand(command string) {
 	case Leave:
 		output = c.doLeave(args)
 
+	case Get:
+		output = c.doGet(args)
+
 	case Exit:
 		os.Exit(0)
 
@@ -107,5 +110,19 @@ func (c *Commander) doLeave(args []string) string {
 		} else {
 			return fmt.Sprintf("Slot %d is free", id)
 		}
+	}
+}
+
+func (c *Commander) doGet(args []string) string {
+
+	if id, err := strconv.Atoi(args[0]); err != nil {
+		return err.Error()
+	} else {
+		car := c.Park.GetSlot(id)
+		if car == nil {
+			return fmt.Sprintf("Slot %d is empty", id)
+		}
+
+		return fmt.Sprintf("Reg No: %s, Color: %s", strings.ToUpper(car.RegNo), strings.Title(car.Color))
 	}
 }
