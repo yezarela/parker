@@ -64,6 +64,9 @@ func (c *Commander) ExecCommand(command string) {
 	case Get:
 		output = c.doGet(args)
 
+	case Search:
+		output = c.doSearch(args)
+
 	case Exit:
 		os.Exit(0)
 
@@ -125,4 +128,18 @@ func (c *Commander) doGet(args []string) string {
 
 		return fmt.Sprintf("Reg No: %s, Color: %s", strings.ToUpper(car.RegNo), strings.Title(car.Color))
 	}
+}
+
+func (c *Commander) doSearch(args []string) string {
+
+	cars := c.Park.Search(args[0])
+	table := "Slot No.\tRegs No.\tColor\n"
+
+	for _, car := range cars {
+		regNo := strings.ToUpper(car.RegNo)
+		color := strings.Title(car.Color)
+		table += fmt.Sprintf("%d\t\t%s\t\t%s\n", car.ID, regNo, color)
+	}
+
+	return table
 }

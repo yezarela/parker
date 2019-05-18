@@ -3,6 +3,7 @@ package park
 import (
 	"container/heap"
 	"errors"
+	"strings"
 	"sync"
 )
 
@@ -13,6 +14,7 @@ var (
 
 // Car represents car
 type Car struct {
+	ID    int
 	RegNo string
 	Color string
 }
@@ -56,6 +58,7 @@ func (p *Park) In(car Car) (*int, error) {
 	avail := heap.Pop(&p.AvailSlots)
 	id := avail.(int)
 
+	car.ID = id
 	p.Slots[id] = car
 
 	return &id, nil
@@ -83,4 +86,19 @@ func (p *Park) GetSlot(id int) *Car {
 	}
 
 	return nil
+}
+
+// Search returns list of cars by specified term
+func (p *Park) Search(term string) []*Car {
+
+	term = strings.ToLower(term)
+	cars := []*Car{}
+
+	for _, v := range p.Slots {
+		if v.RegNo == term || v.Color == term {
+			cars = append(cars, &v)
+		}
+	}
+
+	return cars
 }

@@ -17,7 +17,7 @@ func TestParkIn(t *testing.T) {
 	p := NewPark()
 	p.InitSlots(6)
 
-	id, err := p.In(Car{"B1", "White"})
+	id, err := p.In(Car{RegNo: "B1", Color: "White"})
 	if err != nil {
 		t.Errorf("expect no error, got: %s", err.Error())
 	}
@@ -30,9 +30,9 @@ func TestParkIn(t *testing.T) {
 func TestParkOut(t *testing.T) {
 	p := NewPark()
 	p.InitSlots(6)
-	p.In(Car{"B1", "White"})
-	p.In(Car{"B2", "Black"})
-	p.In(Car{"B3", "White"})
+	p.In(Car{RegNo: "B2", Color: "Black"})
+	p.In(Car{RegNo: "B2", Color: "Black"})
+	p.In(Car{RegNo: "B3", Color: "White"})
 
 	id, err := p.Out(3)
 	if err != nil {
@@ -47,7 +47,7 @@ func TestParkOut(t *testing.T) {
 func TestGetSlot(t *testing.T) {
 	p := NewPark()
 	p.InitSlots(6)
-	p.In(Car{"B1", "White"})
+	p.In(Car{RegNo: "B1", Color: "White"})
 
 	s := p.GetSlot(1)
 	if s == nil {

@@ -12,5 +12,4 @@ func main() {
 	c := cmd.NewCommander(p)
 
 	c.ReadFromStdIn()
-
 }
