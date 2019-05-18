@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"github.com/yezarela/parker/cmd"
 
 	"github.com/yezarela/parker/park"
 )
@@ -9,18 +9,8 @@ import (
 func main() {
 
 	p := park.NewPark()
+	c := cmd.NewCommander(p)
 
-	p.InitSlots(40)
-	a, err := p.In(park.Car{"A1", "Black"})
-	if err != nil {
-		log.Println(err)
-	}
+	c.ReadFromStdIn()
 
-	log.Println(*a)
-	out, err := p.Out(*a)
-	if err != nil {
-		log.Println(err)
-	}
-
-	log.Println(*out)
 }

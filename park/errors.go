@@ -2,6 +2,6 @@ package park
 
 // Park error types
 const (
-	ErrNotAvailable = "Not available"
-	ErrNotFound     = "Not found"
+	ErrNotAvailable string = "Not available"
+	ErrNotFound     string = "Not found"
 )
